@@ -20,6 +20,12 @@
 echo "Checking for newer files online first"
 git pull
 
+echo "Adding time to /etc/dev-rel"
+date_build=$(date -d now)
+echo "Iso build on : "$date_build
+sed -i "s/\(^ISO_BUILD=\).*/\1$date_build/" files/etc/dev-rel
+
+
 # Below command will backup everything inside the project folder
 git add --all .
 
